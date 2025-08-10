@@ -1,0 +1,32 @@
+package StringProblems;
+
+public class LongestPrefix {
+
+	public static void main(String[] args) {
+		String str[] = { "flower", "flow", "flight" };
+		String result = lonestPrefix(str);
+		System.out.println(result);
+
+	}
+
+	public static String lonestPrefix(String str[]) {
+
+		if (str.length == 0 || str == null) {
+			return "";
+		}
+
+		String prefix = str[0];
+		for (int i = 0; i < str.length; i++) {
+			while (str[i].indexOf(prefix) != 0) {
+				prefix = prefix.substring(0, prefix.length() - 1);
+			}
+
+			if (prefix.isEmpty()) {
+				return "";
+			}
+		}
+
+		return prefix;
+	}
+
+}
