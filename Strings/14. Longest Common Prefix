@@ -6,7 +6,6 @@ public class LongestPrefix {
 		String str[] = { "flower", "flow", "flight" };
 		String result = lonestPrefix(str);
 		System.out.println(result);
-
 	}
 
 	public static String lonestPrefix(String str[]) {
