@@ -1,0 +1,36 @@
+package String;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class LengthofLongestSubstringWithAtMostTwoDistinctCharacters{
+	
+	public void variableSizeWindowExample(String s, int k) {
+	    Map<Character, Integer> map = new HashMap<>();
+	    int left = 0;
+	    int maxLen = 0;
+
+	    for (int right = 0; right < s.length(); right++) {
+	        char newChar = s.charAt(right);
+	        map.put(newChar, map.getOrDefault(newChar, 0) + 1);
+
+	        // Shrink the window if we have more than k distinct chars
+	        while (map.size() > k) {
+	            char oldChar = s.charAt(left);
+	            map.put(oldChar, map.get(oldChar) - 1);
+	            if (map.get(oldChar) == 0) {
+	                map.remove(oldChar);
+	            }
+	            left++; // move the left pointer
+	        }
+
+	        // Update maxLen
+	        maxLen = Math.max(maxLen, right - left + 1);
+	        System.out.println("Window: \"" + s.substring(left, right+1) + "\" | Distinct=" + map.size());
+	    }
+
+	    System.out.println("Longest length: " + maxLen);
+	}
+
+
+}
