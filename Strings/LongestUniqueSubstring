@@ -31,9 +31,9 @@ public class LongestUniqueSubstring {
     private static boolean allUnique(String str) {
         HashSet<Character> set = new HashSet<>();
 
-        for (char c : str.toCharArray()) {
+        for (char c: str.toCharArray()) {
             if (set.contains(c)) {
-                return false; // Duplicate found
+                return false; 
             }
             set.add(c);
         }
