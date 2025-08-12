@@ -1,0 +1,43 @@
+package String;
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class LongestUniqueSubstring {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
+
+        String longest = "";
+
+        for (int i = 0; i < input.length(); i++) {
+            for (int j = i + 1; j <= input.length(); j++) {
+                String sub = input.substring(i, j);
+
+                if (allUnique(sub)) {
+                    if (sub.length() > longest.length()) {
+                        longest = sub;
+                    }
+                }
+            }
+        }
+
+        System.out.println("Longest substring without repeating characters: " + longest);
+        System.out.println("Length: " + longest.length());
+    }
+
+    // Helper method to check if all characters in a string are unique
+    private static boolean allUnique(String str) {
+        HashSet<Character> set = new HashSet<>();
+
+        for (char c : str.toCharArray()) {
+            if (set.contains(c)) {
+                return false; // Duplicate found
+            }
+            set.add(c);
+        }
+
+        return true; // All characters are unique
+    }
+}
