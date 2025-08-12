@@ -30,7 +30,6 @@ public class Anagrams {
 
 		System.out.println(isAnagram ? "Anagrams" : "Not anagrams");
 
-
 	}
 
 }
